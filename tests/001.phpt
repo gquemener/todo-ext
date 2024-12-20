@@ -1,10 +1,14 @@
 --TEST--
-Check if todo_ext is loaded
+Check if todo() throws exception
 --EXTENSIONS--
 todo_ext
 --FILE--
 <?php
-echo 'The extension "todo_ext" is available';
+todo();
 ?>
---EXPECT--
-The extension "todo_ext" is available
+--EXPECTF--
+Fatal error: Uncaught Error: Not implemented yet! in %s:%d
+Stack trace:
+#0 %s(%d): todo()
+#1 {main}
+  thrown in %s on line %d
