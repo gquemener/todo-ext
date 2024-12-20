@@ -1,7 +1,7 @@
 --TEST--
 Check if todo() throws exception
 --EXTENSIONS--
-todo_ext
+todo
 --FILE--
 <?php
 todo();

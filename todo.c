@@ -1,4 +1,4 @@
-/* todo_ext extension for PHP */
+/* todo extension for PHP */
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -6,8 +6,8 @@
 
 #include "php.h"
 #include "ext/standard/info.h"
-#include "php_todo_ext.h"
-#include "todo_ext_arginfo.h"
+#include "php_todo.h"
+#include "todo_arginfo.h"
 
 /* For compatibility with older PHP versions */
 #ifndef ZEND_PARSE_PARAMETERS_NONE
@@ -23,38 +23,38 @@ PHP_FUNCTION(todo)
   RETURN_NULL();
 }
 
-PHP_RINIT_FUNCTION(todo_ext)
+PHP_RINIT_FUNCTION(todo)
 {
-#if defined(ZTS) && defined(COMPILE_DL_TODO_EXT)
+#if defined(ZTS) && defined(COMPILE_DL_TODO)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
 
 	return SUCCESS;
 }
 
-PHP_MINFO_FUNCTION(todo_ext)
+PHP_MINFO_FUNCTION(todo)
 {
 	php_info_print_table_start();
-	php_info_print_table_row(2, "todo_ext support", "enabled");
+	php_info_print_table_row(2, "todo support", "enabled");
 	php_info_print_table_end();
 }
 
-zend_module_entry todo_ext_module_entry = {
+zend_module_entry todo_module_entry = {
 	STANDARD_MODULE_HEADER,
-	"todo_ext",					/* Extension name */
+	"todo",					/* Extension name */
 	ext_functions,					/* zend_function_entry */
 	NULL,							/* PHP_MINIT - Module initialization */
 	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
-	PHP_RINIT(todo_ext),			/* PHP_RINIT - Request initialization */
+	PHP_RINIT(todo),			/* PHP_RINIT - Request initialization */
 	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
-	PHP_MINFO(todo_ext),			/* PHP_MINFO - Module info */
-	PHP_TODO_EXT_VERSION,		/* Version */
+	PHP_MINFO(todo),			/* PHP_MINFO - Module info */
+	PHP_TODO_VERSION,		/* Version */
 	STANDARD_MODULE_PROPERTIES
 };
 
-#ifdef COMPILE_DL_TODO_EXT
+#ifdef COMPILE_DL_TODO
 # ifdef ZTS
 ZEND_TSRMLS_CACHE_DEFINE()
 # endif
-ZEND_GET_MODULE(todo_ext)
+ZEND_GET_MODULE(todo)
 #endif

@@ -1,7 +1,7 @@
-ARG_ENABLE('todo_ext', 'todo_ext support', 'no');
+ARG_ENABLE('todo', 'todo support', 'no');
 
-if (PHP_TODO_EXT != 'no') {
-	AC_DEFINE('HAVE_TODO_EXT', 1, "Define to 1 if the PHP extension 'todo_ext' is available.");
+if (PHP_TODO != 'no') {
+	AC_DEFINE('HAVE_TODO', 1, "Define to 1 if the PHP extension 'todo' is available.");
 
-	EXTENSION('todo_ext', 'todo_ext.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+	EXTENSION('todo', 'todo.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
 }
